@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: Spring_AI_Chatbot_RAG
+  # postgrsql 셋팅
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ragdb
+    username: raguser
+    password: ragpass
+    driver-class-name: org.postgresql.Driver
+  # jpa 설정
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  # 올라마 설정
+  ai:
+    model:
+      chat: ollama
+      embedding: ollama
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: gemma2:2b
+      embedding:
+        options:
+          model: mxbai-embed-large:latest
+    # PGVector 설정
+    vectorstore:
+      pgvector:
+        # 백터 검색에 사용될 인덱스 유형
+        index-type: HNSW # 고성능 근사 근접 이웃 검색을 위한 인덱스 방식 (기본값)
+        # 백터간의 유사도를 측정 시 사용할 거리 계산 방식
+        distance-type: COSINE_DISTANCE # 값이 작을 수록 유사 (기본값)
+        # 백터의 차원수
+        dimensions: 1536 # 기본 갯수 (Gemini의 임베딩의 기본 백터 차원)
+        initialize-schema: true
