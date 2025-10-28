@@ -33,5 +33,5 @@ spring:
         # 백터간의 유사도를 측정 시 사용할 거리 계산 방식
         distance-type: COSINE_DISTANCE # 값이 작을 수록 유사 (기본값)
         # 백터의 차원수
-        dimensions: 1536 # 기본 갯수 (Gemini의 임베딩의 기본 백터 차원)
+        dimensions: 1024 # 기본 갯수
         initialize-schema: true
