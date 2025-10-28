@@ -24,7 +24,8 @@ spring:
           model: gemma2:2b
       embedding:
         options:
-          model: mxbai-embed-large:latest
+          model: jeffh/intfloat-multilingual-e5-large-instruct:f16
+          # model: mxbai-embed-large:latest
     # PGVector 설정
     vectorstore:
       pgvector:
@@ -35,3 +36,7 @@ spring:
         # 백터의 차원수
         dimensions: 1024 # 기본 갯수
         initialize-schema: true
+logging:
+  level:
+    org.springframework.ai.vectorstore.pgvector: DEBUG
+    org.springframework.ai.embedding: DEBUG
